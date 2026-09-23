@@ -27,7 +27,8 @@ jobs:
         run: python reconcile.py | tee run.log
 
       - name: Every injected issue found, no false alarms
-        run: grep -q "Missed: 0   False alarms: 0" run.log
+        run: |
+          grep -q "Missed: 0   False alarms: 0" run.log
 
       - name: Results identical to the published ones
         run: git diff --exit-code -- data output
